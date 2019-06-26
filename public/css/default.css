@@ -1,0 +1,210 @@
+/* Default style */
+
+select {
+    background-color: white;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: black;
+    padding:  10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    background-color: white;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: black;
+    padding:  10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.order button {
+    width: 30%;
+}
+.filter button {
+    width: 100%;
+}
+
+.entEdit button {
+    width: 140px;
+    height: 100%;
+}
+
+.header {
+    display: grid; /* basis einstellung fuer layouting grid, flexbox, .... */
+    grid-template-columns: 1fr 30em; /* 1fr (one fraction): Anzahl spalten */
+    grid-template-rows: 5em; /* 100vh (full viewport height). */
+}
+
+.subheader {
+    display: grid; /* basis einstellung fuer layouting grid, flexbox, .... */
+    grid-template-columns: 1fr 30em; /* 1fr (one fraction): Anzahl spalten */
+    grid-template-rows: 6em; /* 100vh (full viewport height). */
+}
+
+.entry {
+    display: grid; /* basis einstellung fuer layouting grid, flexbox, .... */
+    grid-template-columns: 300px 1fr 200px 180px; /* 1fr (one fraction): Anzahl spalten */
+    grid-template-rows: 60px 100px; /* 100vh (full viewport height). */
+}
+
+/* entry items */
+#items div[class*="entry"] {
+    padding:  10px 20px;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+.entEdit {
+    grid-row: 1 / span 2;
+    grid-column: 4;
+    text-align: center;
+
+    padding-top: 40px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+}
+
+
+.entryDetails {
+    grid-row: 2;
+    grid-column: 2 / span 2;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+}
+
+/* Edit form */
+input[type=text] {
+    padding:  10px 20px;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 80%;
+}
+
+#details {
+    height: 100%;
+}
+
+#form div {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+ #form div[class*="Inp"]{
+     padding: 20px;
+ }
+
+#form div[class*="Des"] {
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+#btnSave {
+    width: 100%;
+}
+
+
+#form {
+    display: grid; /* basis einstellung fuer layouting grid, flexbox, .... */
+    grid-template-columns: 200px 1fr ; /* 1fr (one fraction): Anzahl spalten */
+    grid-template-rows: 60px 200px 60px 60px 60px 60px; /* 100vh (full viewport height). */
+}
+
+.formSaveInp {
+    grid-row: 5;
+    grid-column: 1 / span 2;
+}
+
+.formCancelInp {
+    grid-row: 6;
+    grid-column: 1 / span 2;
+    text-align: right;
+}
+
+/* Rating with hover */
+
+.rating {
+    display: inline-block;
+    margin-right: 2em;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #999;
+}
+.rating > span::after {
+    content: '\21AF';
+    -webkit-font-smoothing: antialiased;
+}
+.rating > span:hover,
+.rating > span:hover ~ span, .rating:not(:hover) > span.active {
+    color: transparent;
+}
+.rating > span:hover::before,
+.rating > span:hover ~ span::before, .rating:not(:hover) > span.active::before {
+    position: absolute;
+    left: 0;
+    content: '\21AF'; /* definiert den stern siehe: https://www.toptal.com/designers/htmlarrows/symbols/ */
+    font-weight: 900;
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    color: red;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+
+
+/* StaicRating without hover */
+
+.staticrating {
+    display: inline-block;
+    margin-right: 2em;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+}
+.staticrating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    color: #999;
+}
+.staticrating > span::after {
+    content: '\21AF';
+    -webkit-font-smoothing: antialiased;
+}
+.staticrating > span.active {
+    color: transparent;
+}
+.staticrating > span.active::before {
+    position: absolute;
+    left: 0;
+    content: '\21AF'; /* definiert den stern siehe: https://www.toptal.com/designers/htmlarrows/symbols/ */
+    font-weight: 900;
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    color: red;
+    -webkit-font-smoothing: antialiased;
+}

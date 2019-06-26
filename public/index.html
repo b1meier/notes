@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Notes pro</title>
+    <link href="notes.css" rel="stylesheet" type="text/css">
+
+    <script id="entry-template" type="text/x-handlebars-template">
+
+        <table>
+                {{#each this}}
+               <tr><td class="column1">
+				<input type="hidden" name="noteId" id="noteId" value="{{id}}">
+                      <p>  {{due}}</p>
+                    <p>{{finished}}</p>
+					<input type="checkbox" name="finished" data-note-id="{{id}}" id="finished" {{{checked finished}}}/>
+                </td>
+                <td class="column2"><div class="title">{{title}}</div>
+                    <div class="description">{{description}}</div>
+					<textarea name="description" data-note-id="{{id}}" id="description" cols="60" rows="5">{{description}}</textarea>
+					</td>
+                <td class="column3">
+				<button data-delta="-1" data-song-id="{{id}}">Edit</button>
+				</td>
+                </tr> 
+                {{/each}}
+              </table>
+    </script>
+
+</head>
+<body>
+
+        <div class="grid-container">
+                <div class="grid-item item1"><button type="button" id="btnNew">Create new Note</button>
+				</div>
+                <div class="grid-item item2">Nav</div>
+                <div class="grid-item item3"><button type="button" id="btnFinishDate">By finish Date</button><button type="button" id="btnCreatedDate">By created Date</button><button type="button" id="btnImportance">By Importance</button></div>  
+                <div class="grid-item item4"><button type="button" id="btnFinished">Show finished</button></div>
+                <div class="grid-item item5" id="container"></div>
+            </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+<!-- <script src="notes.js"></script>-->
+<script src="js/handlebars.js"></script>
+<script src="extern/moment-with-locales.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/list.js"></script>
+
+</body>
+</html>
