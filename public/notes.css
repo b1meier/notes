@@ -43,13 +43,27 @@
     grid-row: 3;
   }
   
-  
-  
-  
+  #rate-area-list {
+    float: right;
+    padding: 20px;
+    background: #eee;
+}
+ 
+.title {
+overflow: auto;
+}
+
+div {
+	height: auto;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
 
   
   
-  #id1 {
+  #btnNew {
     /* background-color: grey;  */
     border-style: inset;
   }
@@ -248,3 +262,28 @@ input:focus {
     top:2px;
     left:2px;
 }
+
+
+/* Menu radio buttons */
+
+.input-radio{
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+input[type=radio] {
+    display: none;
+  }
+.input-radio > label {
+    padding: 20px;
+    border: 1px solid #ddd;
+ 
+  }
+  .input-radio > label:hover {
+    border: 1px solid red;
+  }
+
+  .input-radio > input[type="radio"]:checked+label {
+    border: 1px solid red;
+  }
+

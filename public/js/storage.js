@@ -7,6 +7,7 @@
 
         getNoteById(id, callback) {
             let result = ajax("GET", "/note/"+id, undefined, undefined);
+            console.log("result = " + result);
             result.done(callback);
         }
 
@@ -27,12 +28,28 @@
             ajax("POST", "/note", entry);
         };
 
+        deleteNote (id) {
+            console.log("ajax delete id = " + id)
+            ajax("DELETE", "/note/" + id);
+        };
+
         updateNote (entry) {
+            console.log("storage.js " + entry)
             ajax("PUT", "/note/" + entry._id, entry);
         };
 
         toggleState(id, done, callback) {
             let result = ajax("PATCH", "/note/" + id, {done: done}, undefined);
+            result.done(callback);
+        }
+
+        updateDescription(id, descr, callback) {
+            let result = ajax("PATCH", "/note/" + id, {description: descr}, undefined);
+            result.done(callback);
+        }
+
+        updateImportance(id, imp, callback) {
+            let result = ajax("PATCH", "/note/" + id, {importance: imp}, undefined);
             result.done(callback);
         }
 

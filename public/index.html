@@ -11,16 +11,24 @@
                 {{#each this}}
                <tr><td class="column1">
 				<input type="hidden" name="noteId" id="noteId" value="{{id}}">
-                      <p>  {{due}}</p>
-                    <p>{{finished}}</p>
-					<input type="checkbox" name="finished" data-note-id="{{id}}" id="finished" {{{checked finished}}}/>
+                      <p>{{formatDate duedate}}</p>
+                    <p>{{done}}</p>
+					<input type="checkbox" name="finished" data-id="{{_id}}" id="finished" {{{checked done}}}/>
                 </td>
-                <td class="column2"><div class="title">{{title}}</div>
+                <td class="column2"><div class="title"> 
+                    <form class="c1" id="id1" data-id="{{_id}}"> <div class="rate-area" id="rate-area-list" data-id="{{_id}}">
+                    <input class="importance_input" type="radio" id="5-star_{{_id}}" name="{{_id}}" value="5" data-id="{{_id}}" {{{radioChecked 5 importance}}}/><label class="importance" for="5-star_{{_id}}" title="Amazing" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="4-star_{{_id}}" name="{{_id}}" value="4" data-id="{{_id}}" {{{radioChecked 4 importance}}}/><label class="importance" for="4-star_{{_id}}" title="Good" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="3-star_{{_id}}" name="{{_id}}" value="3" data-id="{{_id}}" {{{radioChecked 3 importance}}}/><label class="importance" for="3-star_{{_id}}" title="Average" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="2-star_{{_id}}" name="{{_id}}" value="2" data-id="{{_id}}" {{{radioChecked 2 importance}}}/><label class="importance" for="2-star_{{_id}}" title="Not Good" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="1-star_{{_id}}" name="{{_id}}" value="1" data-id="{{_id}}" {{{radioChecked 1 importance}}}/><label class="importance" for="1-star_{{_id}}" title="Bad" data-id="{{_id}}"></label>
+                </div></form>{{title}}</div>
                     <div class="description">{{description}}</div>
-					<textarea name="description" data-note-id="{{id}}" id="description" cols="60" rows="5">{{description}}</textarea>
+					<textarea name="description" data-id="{{_id}}" id="description" cols="60" rows="5">{{description}}</textarea>
 					</td>
                 <td class="column3">
-				<button data-delta="-1" data-song-id="{{id}}">Edit</button>
+                <button data-id="{{_id}}" id="btnEdit">Edit</button>
+                <button data-id="{{_id}}" id="btnDelete">Delete</button>
 				</td>
                 </tr> 
                 {{/each}}
@@ -34,7 +42,15 @@
                 <div class="grid-item item1"><button type="button" id="btnNew">Create new Note</button>
 				</div>
                 <div class="grid-item item2">Nav</div>
-                <div class="grid-item item3"><button type="button" id="btnFinishDate">By finish Date</button><button type="button" id="btnCreatedDate">By created Date</button><button type="button" id="btnImportance">By Importance</button></div>  
+                <div class="grid-item item3">
+                    
+                  <!--  <button type="button" id="btnFinishDate">By finish Date</button><button type="button" id="btnCreatedDate">By created Date</button><button type="button" id="btnImportance">By Importance</button> -->
+                
+                    <div class="input-radio"><input type="radio" name="sort" value="finished" checked> <label for="finished" id="btnFinishDate">By finish Date</label></div>
+                    <div class="input-radio"><input type="radio" name="sort" value="created"> <label for="created" id="btnCreatedDate">By created Date</label></div>
+                    <div class="input-radio"><input type="radio" name="sort" value="importance"> <label for="importance" id="btnImportance">By Importance</label></div>
+                
+                </div>  
                 <div class="grid-item item4"><button type="button" id="btnFinished">Show finished</button></div>
                 <div class="grid-item item5" id="container"></div>
             </div>

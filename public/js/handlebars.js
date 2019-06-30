@@ -4,6 +4,10 @@ Handlebars.registerHelper('formatDate', function(date) {
     return moment(date).format("dddd, DD.MM.YYYY");
 });
 
+Handlebars.registerHelper('formatDateForm', function(date) {
+    return moment(date).format("YYYY-MM-DD");
+});
+
 Handlebars.registerHelper('formatState', function(done) {
     return done ? "Checked" : "";
 });
@@ -27,5 +31,14 @@ Handlebars.registerHelper('formatImportance', function(importance) {
 
 Handlebars.registerHelper('checked', function(currentValue) {
     console.log(currentValue);
-return currentValue == '1' ? ' checked="checked"' : '';
+return currentValue == true ? ' checked="checked"' : '';
 });
+
+Handlebars.registerHelper ('radioChecked', function (value, currentValue) {
+    console.log("best " + value + ", " + currentValue);
+    if ( value == currentValue ) {
+       return "checked";
+    } else {
+       return "";
+    }
+ });
