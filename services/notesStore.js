@@ -3,19 +3,14 @@ const db = new Datastore({ filename: './data/notes.db', autoload: true });
 
 function Notes(note)
 {
-    const { title, details, importance, duedate, createdate, done} = note;
+    const { title, description, importance, duedate, createdate, done} = note;
     this.title = title;
-    this.details = details;
+    this.description = description;
     this.importance = importance;
     this.duedate = duedate;
-    this.createdate = createdate; // einfach stringify? in console idetnisch:
-    /*
-     duedate: '2017-06-30T10:00:00.000Z',
-     createdate: '2017-06-27T19:54:53.044Z',
-     */
+    this.createdate = createdate;
     this.done = done;
 }
-
 
 function publicAddNotes(entry, callback)
 {
@@ -27,9 +22,9 @@ function publicAddNotes(entry, callback)
     });
 }
 
-function publicRemove(id, currentUser, callback) {
-    db.update({_id: id, orderedBy : currentUser}, {$set: {"state": "DELETED"}}, {}, function (err, count) {
-        publicGet(id, currentUser, callback);
+function publicRemove(id, callback) {
+    db.update({_id: id}, {$set: {"state": "DELETED"}}, {}, function (err, count) {
+        publicGet(id, callback);
     });
 }
 

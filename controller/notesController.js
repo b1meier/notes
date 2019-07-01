@@ -59,11 +59,15 @@ module.exports.showNote = function(req, res)
 
 module.exports.deleteNote =  function (req, res)
 {
-    store.delete(req.params.id, 'duedate', function(err, order) {
+    console.log("req.params = " + req.params.id);
+    store.delete(req.params.id, function(err, order) {
         res.format({
             'application/json': function(){
                 res.json(order);
             }
         });
     });
+    console.log("bla a");
+    store.persistence.compactDatafile;
+    console.log("bla b");
 };

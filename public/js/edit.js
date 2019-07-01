@@ -9,12 +9,13 @@
     $(document).ready(function () {
         //$("#title").val('Initialwerte Titel falls noetig');
         console.log("aaa");
-        //renderStyle();
+        renderStyle();
         console.log("bbb");
         let id =window.location.hash.substring(1); // $_GET[#id]
         if (id.length > 0) {
             console.log("ccc");
             mystorage.getNoteById(id, createEditForm);
+            console.log("ccc3");
         }
         else {
             console.log("ddd");

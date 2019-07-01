@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Notes pro</title>
-    <link href="notes.css" rel="stylesheet" type="text/css">
+    <link id="style" href="css/default.css" rel="stylesheet" type="text/css">
 
     <script id="entry-template" type="text/x-handlebars-template">
 
@@ -27,8 +27,8 @@
 					<textarea name="description" data-id="{{_id}}" id="description" cols="60" rows="5">{{description}}</textarea>
 					</td>
                 <td class="column3">
-                <button data-id="{{_id}}" id="btnEdit">Edit</button>
-                <button data-id="{{_id}}" id="btnDelete">Delete</button>
+                <div class = "edit_delete"><button data-id="{{_id}}" id="btnEdit">Edit</button></div>
+                <div class = "edit_delete"><button data-id="{{_id}}" id="btnDelete">Delete</button></div>
 				</td>
                 </tr> 
                 {{/each}}
@@ -41,21 +41,43 @@
         <div class="grid-container">
                 <div class="grid-item item1"><button type="button" id="btnNew">Create new Note</button>
 				</div>
-                <div class="grid-item item2">Nav</div>
+                <div class="grid-item item2"><select id="styleselect" size="1"> <option value="default" selected>Default style</option> <option value="fancy_style">Fancy style</option></select></div>
                 <div class="grid-item item3">
                     
                   <!--  <button type="button" id="btnFinishDate">By finish Date</button><button type="button" id="btnCreatedDate">By created Date</button><button type="button" id="btnImportance">By Importance</button> -->
                 
-                    <div class="input-radio"><input type="radio" name="sort" value="finished" checked> <label for="finished" id="btnFinishDate">By finish Date</label></div>
-                    <div class="input-radio"><input type="radio" name="sort" value="created"> <label for="created" id="btnCreatedDate">By created Date</label></div>
-                    <div class="input-radio"><input type="radio" name="sort" value="importance"> <label for="importance" id="btnImportance">By Importance</label></div>
-                
+                    <div class="input-radio"><input type="radio" id="_finished" value="finished" name="sort" checked>
+                            <label for="_finished" id="btnFinishDate">By finish Date</label>
+                    <input type="radio" id="_created" value="created" name="sort" checked>
+                            <label for="_created" id="btnCreatedDate">By created Date</label>
+                    <input type="radio" id="_importance" value="importance" name="sort" checked>
+                            <label for="_importance" id="btnImportance">By Importance</label></div>
+                   <!-- 
+                    <div>
+                    <ul class="donate-now">
+                        <li>
+                            <input type="radio" id="_finished" value="finished" name="sort" checked>
+                            <label for="_finished" id="btnFinishDate">By finish Date</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="_created" value="created" name="sort" checked>
+                            <label for="_created" id="btnCreatedDate">By created Date</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="_importance" value="importance" name="sort" checked>
+                            <label for="_importance" id="btnImportance">By Importance</label>
+                        </li>
+                        </ul>
+                    </div>
+ -->
+
                 </div>  
                 <div class="grid-item item4"><button type="button" id="btnFinished">Show finished</button></div>
                 <div class="grid-item item5" id="container"></div>
             </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
 <!-- <script src="notes.js"></script>-->
 <script src="js/handlebars.js"></script>
