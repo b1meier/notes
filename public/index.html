@@ -17,11 +17,11 @@
                 </td>
                 <td class="column2"><div class="title"> 
                     <form class="c1" id="id1" data-id="{{_id}}"> <div class="rate-area" id="rate-area-list" data-id="{{_id}}">
-                    <input class="importance_input" type="radio" id="5-star_{{_id}}" name="{{_id}}" value="5" data-id="{{_id}}" {{{radioChecked 5 importance}}}/><label class="importance" for="5-star_{{_id}}" title="Amazing" data-id="{{_id}}"></label>
-                    <input class="importance_input" type="radio" id="4-star_{{_id}}" name="{{_id}}" value="4" data-id="{{_id}}" {{{radioChecked 4 importance}}}/><label class="importance" for="4-star_{{_id}}" title="Good" data-id="{{_id}}"></label>
-                    <input class="importance_input" type="radio" id="3-star_{{_id}}" name="{{_id}}" value="3" data-id="{{_id}}" {{{radioChecked 3 importance}}}/><label class="importance" for="3-star_{{_id}}" title="Average" data-id="{{_id}}"></label>
-                    <input class="importance_input" type="radio" id="2-star_{{_id}}" name="{{_id}}" value="2" data-id="{{_id}}" {{{radioChecked 2 importance}}}/><label class="importance" for="2-star_{{_id}}" title="Not Good" data-id="{{_id}}"></label>
-                    <input class="importance_input" type="radio" id="1-star_{{_id}}" name="{{_id}}" value="1" data-id="{{_id}}" {{{radioChecked 1 importance}}}/><label class="importance" for="1-star_{{_id}}" title="Bad" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="5-star_{{_id}}" name="{{_id}}" value="5" data-id="{{_id}}" {{{radioChecked 5 importance}}}/><label class="importance" for="5-star_{{_id}}" title="Veeery urgent" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="4-star_{{_id}}" name="{{_id}}" value="4" data-id="{{_id}}" {{{radioChecked 4 importance}}}/><label class="importance" for="4-star_{{_id}}" title="Urgent" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="3-star_{{_id}}" name="{{_id}}" value="3" data-id="{{_id}}" {{{radioChecked 3 importance}}}/><label class="importance" for="3-star_{{_id}}" title="Not to urgent" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="2-star_{{_id}}" name="{{_id}}" value="2" data-id="{{_id}}" {{{radioChecked 2 importance}}}/><label class="importance" for="2-star_{{_id}}" title="Fairly unurgent" data-id="{{_id}}"></label>
+                    <input class="importance_input" type="radio" id="1-star_{{_id}}" name="{{_id}}" value="1" data-id="{{_id}}" {{{radioChecked 1 importance}}}/><label class="importance" for="1-star_{{_id}}" title="Can be done at some point" data-id="{{_id}}"></label>
                 </div></form>{{title}}</div>
                     <div class="description">{{description}}</div>
 					<textarea name="description" data-id="{{_id}}" id="description" cols="60" rows="5">{{description}}</textarea>
@@ -44,42 +44,21 @@
                 <div class="grid-item item2"><select id="styleselect" size="1"> <option value="default" selected>Default style</option> <option value="fancy_style">Fancy style</option></select></div>
                 <div class="grid-item item3">
                     
-                  <!--  <button type="button" id="btnFinishDate">By finish Date</button><button type="button" id="btnCreatedDate">By created Date</button><button type="button" id="btnImportance">By Importance</button> -->
-                
-                    <div class="input-radio"><input type="radio" id="_finished" value="finished" name="sort" checked>
-                            <label for="_finished" id="btnFinishDate">By finish Date</label>
-                    <input type="radio" id="_created" value="created" name="sort" checked>
-                            <label for="_created" id="btnCreatedDate">By created Date</label>
+                    <div class="input-radio"><input type="radio" id="_duedate" value="finished" name="sort" checked>
+                            <label for="_duedate" id="btnFinishDate">By finish Date</label>
+                    <input type="radio" id="_createdate" value="created" name="sort" checked>
+                            <label for="_createdate" id="btnCreatedDate">By created Date</label>
                     <input type="radio" id="_importance" value="importance" name="sort" checked>
                             <label for="_importance" id="btnImportance">By Importance</label></div>
-                   <!-- 
-                    <div>
-                    <ul class="donate-now">
-                        <li>
-                            <input type="radio" id="_finished" value="finished" name="sort" checked>
-                            <label for="_finished" id="btnFinishDate">By finish Date</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="_created" value="created" name="sort" checked>
-                            <label for="_created" id="btnCreatedDate">By created Date</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="_importance" value="importance" name="sort" checked>
-                            <label for="_importance" id="btnImportance">By Importance</label>
-                        </li>
-                        </ul>
-                    </div>
- -->
+
 
                 </div>  
                 <div class="grid-item item4"><button type="button" id="btnFinished">Show finished</button></div>
                 <div class="grid-item item5" id="container"></div>
             </div>
 
-<!--- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
-<!-- <script src="notes.js"></script>-->
 <script src="js/handlebars.js"></script>
 <script src="extern/moment-with-locales.js"></script>
 <script src="js/storage.js"></script>

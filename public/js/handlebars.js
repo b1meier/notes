@@ -30,12 +30,10 @@ Handlebars.registerHelper('formatImportance', function(importance) {
 });
 
 Handlebars.registerHelper('checked', function(currentValue) {
-    console.log(currentValue);
 return currentValue == true ? ' checked="checked"' : '';
 });
 
 Handlebars.registerHelper ('radioChecked', function (value, currentValue) {
-    console.log("best " + value + ", " + currentValue);
     if ( value == currentValue ) {
        return "checked";
     } else {

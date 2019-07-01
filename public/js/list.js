@@ -1,4 +1,6 @@
-;( function() {
+'use strict';
+
+( function() {
     // closure scope
     'use strict';
 
@@ -17,13 +19,13 @@
 
         renderStyle();
         renderItems();
+        setSavedOrder();
     });
 
     let mystorage = new Storage();
     const entryHtml = Handlebars.compile(document.getElementById("entry-template").innerText);
 
     function renderItems() {
-        console.log("bbb222");
         // since storage is rest interface from server (give asynch callback function)
         mystorage.getNotesList(function( data ) {
             $("#container").html(entryHtml(data));
@@ -35,11 +37,7 @@
     }
 
     function bubbledItemEventOnClick(event){
-        console.log("bubbled");
         let itemid = event.target.getAttribute("data-id");
-        console.log(itemid);
-        console.log("klass = " + event.target.getAttribute("class") + ", " + event.target.id);
-        console.log(event.target.getAttribute("data-id"));
         if (event.target.id == "btnEdit") {
             window.location.href = "edit.html#" + itemid;
         }
@@ -47,23 +45,17 @@
             mystorage.deleteNote(itemid);
         }
         else if (event.target.id == "finished") {
-            console.log("toggle " + event.target.checked);
             mystorage.toggleState(itemid, event.target.checked, renderItems); // render Items callback after updated
         }
         else if (event.target.getAttribute("class") == "importance_input") {
             itemid = event.target.name;
-            console.log(itemid);
-                console.log("change priority" + event.target.value);
-                mystorage.updateImportance(itemid, event.target.value, renderItems);
+            mystorage.updateImportance(itemid, event.target.value, renderItems);
         }
     }
 
     function bubbledItemEventOnChange(event){
-        console.log("bubbled on change");
         let itemid = event.target.getAttribute("data-id");
-        console.log(itemid);
         if (event.target.id == "description") {
-            console.log("change description");
             mystorage.updateDescription(itemid, event.target.value, renderItems);
         }
     }
@@ -99,6 +91,11 @@
             $("#styleselect").val(cssStyle);
             document.getElementById("style").href = "css/" + cssStyle + ".css";
         }
+    }
+
+    function setSavedOrder() {
+        let order = localStorage.getItem("order");
+        $("#_" + order.replace(/\"/g, "")).prop("checked", true);
     }
 
 } ());

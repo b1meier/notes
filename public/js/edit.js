@@ -7,34 +7,22 @@
     const entryHtml = Handlebars.compile(document.getElementById("form-template").innerText);
 
     $(document).ready(function () {
-        //$("#title").val('Initialwerte Titel falls noetig');
-        console.log("aaa");
         renderStyle();
-        console.log("bbb");
-        let id =window.location.hash.substring(1); // $_GET[#id]
+        let id = window.location.hash.substring(1); // $_GET[#id]
         if (id.length > 0) {
-            console.log("ccc");
             mystorage.getNoteById(id, createEditForm);
-            console.log("ccc3");
         }
         else {
-            console.log("ddd");
             let item = {
                 importance: 1, // default importance new form
                 state: "open"
             };
             createEditForm(item);
         }
-
     });
 
     function createEditForm(item) {
-        console.log("eee");
-        //Importance.set(item.importance);
-        $("#form-container").html(entryHtml(item)); // innerHTML=entryHtml(songs.sort(compareSongs));
-        console.log("fff");
-        //showImportance();
-        console.log("ggg");
+        $("#form-container").html(entryHtml(item));
         $("#btnSave").on("click", save);
         $("#btnCancel").on("click", cancel);
         /*$("#dueDate").datepicker({
@@ -42,20 +30,19 @@
         }); */
     }
 
-    function save(){
+function doNothing() {
+
+}
+
+    function save(e){
+        e.preventDefault();  // If not, the parameters are sent to the current page
         let entry = new Object();
         entry._id = $("#_id").val();
         entry.title = $("#title").val();
-        console.log("abc " + entry.title);
         entry.description = $("#description").val();
-        // entry.importance = Importance.get();
-        // entry.importance = $("#importance").val();
         entry.importance = $("input[name='rating']:checked").val();
-        console.log("date " + $("#dueDate").val());
         entry.duedate = createTimeStamp($("#dueDate").val());
-        console.log(entry.duedate);
         //entry.createdate = new Date().valueOf(); // set create date at server: local timezone doesn't matter for createdate
-        
 
             if (entry._id.length > 0) {
                 // id is set -> update entry
@@ -65,11 +52,9 @@
             else {
                 // id is empty -> add new note
                 entry.done = false;
-                console.log("entry = " + entry);
                mystorage.addNote(entry);
                window.location.href = "index.html";
             }
-        
     }
 
     function createTimeStamp(datestring) {
@@ -82,7 +67,8 @@
         return duedate.valueOf();
     }
 
-    function cancel(){
+    function cancel(e){
+        e.preventDefault();  // If not, the parameters are sent to the current page
         window.location.href = "index.html";
     }
 

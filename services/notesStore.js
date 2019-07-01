@@ -23,8 +23,8 @@ function publicAddNotes(entry, callback)
 }
 
 function publicRemove(id, callback) {
-    db.update({_id: id}, {$set: {"state": "DELETED"}}, {}, function (err, count) {
-        publicGet(id, callback);
+    db.remove({ _id: id }, function (err, numDeleted) {
+        callback( err, numDeleted);
     });
 }
 
