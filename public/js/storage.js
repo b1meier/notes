@@ -59,6 +59,7 @@
             let filter = JSON.parse(localStorage.getItem("finishedfilter"));
             filter = !filter; // invert flag
             localStorage.setItem("finishedfilter", JSON.stringify(filter));
+            return filter;
         };
 
         getStyle () {

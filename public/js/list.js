@@ -20,6 +20,8 @@
         renderStyle();
         renderItems();
         setSavedOrder();
+        let filter = JSON.parse(localStorage.getItem("finishedfilter"));
+        styleFinishedFilterButton(filter);
     });
 
     let mystorage = new Storage();
@@ -43,6 +45,7 @@
         }
         if (event.target.id == "btnDelete") {
             mystorage.deleteNote(itemid);
+            renderItems();
         }
         else if (event.target.id == "finished") {
             mystorage.toggleState(itemid, event.target.checked, renderItems); // render Items callback after updated
@@ -81,8 +84,9 @@
     }
 
     function showFinished() {
-        mystorage.toggleFinishedFilter();
+        let filter = mystorage.toggleFinishedFilter();
         renderItems();
+        styleFinishedFilterButton(filter);
     }
 
     function renderStyle() {
@@ -96,6 +100,16 @@
     function setSavedOrder() {
         let order = localStorage.getItem("order");
         $("#_" + order.replace(/\"/g, "")).prop("checked", true);
+    }
+
+    function styleFinishedFilterButton(filter) {
+        console.log("filter = " + filter);
+        if (filter) {
+            $("#btnFinished").addClass("btnPressed");
+        }
+        else {
+            $("#btnFinished").removeClass("btnPressed");
+        }
     }
 
 } ());
