@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>Notes pro</title>
     <link id="style" href="css/default.css" rel="stylesheet" type="text/css">
-
-
-
 </head>
+
 <body>
-        <div id="form-container"></div>
+    <div id="form-container"></div>
 
     <script id="form-template" type="text/x-handlebars-template">
-
         <form class="form1" action="">
-                <input type="hidden" id="_id" value="{{ _id }}">
-            <label for="title" class="title">Titel</label>
+            <input type="hidden" id="_id" value="{{ _id }}">
+            <label for="title" class="title-form">Titel</label>
             <input id="title" type="text" value="{{ title }}" required>
-
             <label for="description" class="last-name">Beschreibung</label>
 			<textarea name="description" id="description" cols="30" rows="10">{{description}}</textarea>
-
             <label for="job">Wichtigkeit</label>
-			      <div class="rate-area">
-      <input type="radio" id="5-star" name="rating" value="5" {{{radioChecked 5 importance}}}/><label class="importance" for="5-star" title="Veeery urgent"></label>
-      <input type="radio" id="4-star" name="rating" value="4" {{{radioChecked 4 importance}}}/><label class="importance" for="4-star" title="Urgent"></label>
-      <input type="radio" id="3-star" name="rating" value="3" {{{radioChecked 3 importance}}}/><label class="importance" for="3-star" title="Not to urgent"></label>
-      <input type="radio" id="2-star" name="rating" value="2" {{{radioChecked 2 importance}}}/><label class="importance" for="2-star" title="Fairly unurgent"></label>
-      <input type="radio" id="1-star" name="rating" value="1" {{{radioChecked 1 importance}}}/><label class="importance" for="1-star" title="Can be done at some point"></label>
-</div>
+			<div class="rate-area">
+                <input type="radio" id="5-star" name="rating" value="5" {{{radioChecked 5 importance}}}/><label class="importance" for="5-star" title="Veeery urgent"></label>
+                <input type="radio" id="4-star" name="rating" value="4" {{{radioChecked 4 importance}}}/><label class="importance" for="4-star" title="Urgent"></label>
+                <input type="radio" id="3-star" name="rating" value="3" {{{radioChecked 3 importance}}}/><label class="importance" for="3-star" title="Not to urgent"></label>
+                <input type="radio" id="2-star" name="rating" value="2" {{{radioChecked 2 importance}}}/><label class="importance" for="2-star" title="Fairly unurgent"></label>
+            <input type="radio" id="1-star" name="rating" value="1" {{{radioChecked 1 importance}}}/><label class="importance" for="1-star" title="Can be done at some point"></label>
+            </div>
 
             <label for="dueDate">Erledigt bis</label>
             <input id="dueDate" type="date" value="{{formatDateForm duedate}}">
@@ -36,16 +32,15 @@
             <button id="btnSave">Submit</button>
             <button id="btnCancel">Cancel</button>
         </form>
-
     </script>
 
-      
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
-<script src="extern/moment-with-locales.js"></script>
-<script src="js/handlebars.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/edit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
+        integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+    <script src="extern/moment-with-locales.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/edit.js"></script>
 
 </body>
 </html>

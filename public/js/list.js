@@ -1,6 +1,6 @@
 'use strict';
 
-( function() {
+(function () {
     // closure scope
     'use strict';
 
@@ -10,10 +10,8 @@
         $("#btnFinishDate").on("click", orderByFinish);
         $("#btnCreatedDate").on("click", orderByCreated);
         $("#btnImportance").on("click", orderByImportance);
-
         $("#btnFinished").on("click", showFinished);
 
-        // append listener over complete item list to prevent listener memory leaks while dom changes
         $("#container").on("click", bubbledItemEventOnClick);
         $("#container").on("change", bubbledItemEventOnChange);
 
@@ -29,16 +27,16 @@
 
     function renderItems() {
         // since storage is rest interface from server (give asynch callback function)
-        mystorage.getNotesList(function( data ) {
+        mystorage.getNotesList(function (data) {
             $("#container").html(entryHtml(data));
         });
     }
 
-    function createNew(){
+    function createNew() {
         window.location.replace("edit.html");
     }
 
-    function bubbledItemEventOnClick(event){
+    function bubbledItemEventOnClick(event) {
         let itemid = event.target.getAttribute("data-id");
         if (event.target.id == "btnEdit") {
             window.location.href = "edit.html#" + itemid;
@@ -46,19 +44,17 @@
         if (event.target.id == "btnDelete") {
             mystorage.deleteNote(itemid);
             renderItems();
-        }
-        else if (event.target.id == "finished") {
+        } else if (event.target.getAttribute("class") == "chbx_finished") {
             mystorage.toggleState(itemid, event.target.checked, renderItems); // render Items callback after updated
-        }
-        else if (event.target.getAttribute("class") == "importance_input") {
+        } else if (event.target.getAttribute("class") == "importance_input") {
             itemid = event.target.name;
             mystorage.updateImportance(itemid, event.target.value, renderItems);
         }
     }
 
-    function bubbledItemEventOnChange(event){
+    function bubbledItemEventOnChange(event) {
         let itemid = event.target.getAttribute("data-id");
-        if (event.target.id == "description") {
+        if (event.target.getAttribute("class") == "description") {
             mystorage.updateDescription(itemid, event.target.value, renderItems);
         }
     }
@@ -103,13 +99,11 @@
     }
 
     function styleFinishedFilterButton(filter) {
-        console.log("filter = " + filter);
         if (filter) {
             $("#btnFinished").addClass("btnPressed");
-        }
-        else {
+        } else {
             $("#btnFinished").removeClass("btnPressed");
         }
     }
 
-} ());
+}());

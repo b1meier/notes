@@ -46,14 +46,14 @@ body {
   grid-row: 3;
 }
 
-#rate-area-list {
-  float: right;
-  padding: 20px;
-  background: #eee;
-}
-
 .title {
   overflow: auto;
+  font-weight: bold;
+  font-size: 130%;
+}
+
+.title-form {
+  font-weight: bold;
 }
 
 div {
@@ -64,7 +64,10 @@ div {
   width: auto;
 }
 
-
+.duedate {
+  margin-bottom: 10px;
+  margin-left: 3px;
+}
 
 .btnPressed {
   border-style: inset;
@@ -154,11 +157,7 @@ table tfoot .links a {
   width: 15%;
 }
 
-
-
-
-
-form {
+.form1 {
   display: grid;
   padding: 1em;
   background: #f9f9f9;
@@ -168,19 +167,19 @@ form {
   padding: 1em;
 }
 
-form input {
+.form1 input {
   background: #fff;
   border: 1px solid #9c9c9c;
 }
 
-form button {
+.form1 button {
   background: lightgrey;
   padding: 0.7em;
   width: 100%;
   border: 0;
 }
 
-form button:hover {
+.form1 button:hover {
   background: gold;
 }
 
@@ -220,11 +219,11 @@ input:focus {
 }
 
 
-
-
+/* Rate area */
 
 .rate-area {
-  float: left;
+  float: right;
+  padding: 5px;
   border-style: none;
 }
 
@@ -248,7 +247,7 @@ input:focus {
 }
 
 .rate-area:not(:checked)>label:before {
-  content: '★ ';
+  content: '! ';
 }
 
 .rate-area>input:checked~label {
@@ -303,5 +302,5 @@ input[type=radio] {
 
 .input-radio>input[type="radio"]:checked+label {
   border: 1px solid red;
-  background: yellow;
+  background: gold;
 }
